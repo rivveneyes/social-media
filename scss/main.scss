@@ -1,0 +1,33 @@
+@import "reset";
+@mixin round-logo {
+  border-radius: 50%;
+  padding: 10px;
+  background-color: white;
+  margin: 3px;
+}
+nav {
+  background-color: rgb(68, 68, 68);
+  position: fixed;
+  width: 100%;
+  display: flex;
+  input {
+    border-radius: 25px;
+    padding-left: 15px;
+  }
+}
+.logo {
+  @include round-logo;
+  &:hover {
+    background-color: teal;
+  }
+}
+.logo-main {
+  background-color: tomato;
+  &:hover {
+    background-color: tomato;
+  }
+}
+.search-bar {
+  width: 100%;
+  margin: 5px;
+}
