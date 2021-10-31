@@ -2,14 +2,28 @@
 @mixin round-logo {
   border-radius: 50%;
   padding: 10px;
-  background-color: white;
+  background-color: lighten($secondary-color, 10%);
   margin: 3px;
 }
+
+$primary-color: #6c698d;
+$secondary-color: #d4d2d5;
+$third-color: #bfafa6;
+
+$font-sizes: (
+  "small": 16px,
+  "med": 25px,
+  "larg": 30px,
+  "x-large": 35px,
+);
+body {
+  background-color: $primary-color;
+}
 nav {
-  background-color: rgb(68, 68, 68);
-  position: fixed;
+  background-color: $secondary-color;
   width: 100%;
   display: flex;
+  margin-bottom: 20px;
   input {
     border-radius: 25px;
     padding-left: 15px;
@@ -17,17 +31,23 @@ nav {
 }
 .logo {
   @include round-logo;
+
   &:hover {
-    background-color: teal;
+    background-color: $third-color;
   }
 }
 .logo-main {
-  background-color: tomato;
+  background-color: darken($secondary-color, 20%);
   &:hover {
-    background-color: tomato;
+    background-color: darken($secondary-color, 20%);
   }
 }
 .search-bar {
   width: 100%;
   margin: 5px;
+}
+h1 {
+  background-color: $third-color;
+  text-align: center;
+  font-size: map-get($font-sizes, x-large);
 }
