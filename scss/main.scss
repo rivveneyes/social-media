@@ -1,53 +1,64 @@
+@use "tools/variables" as var;
+@use "tools/mixins";
+@use "navigation";
 @import "reset";
-@mixin round-logo {
-  border-radius: 50%;
-  padding: 10px;
-  background-color: lighten($secondary-color, 10%);
-  margin: 3px;
-}
-
-$primary-color: #6c698d;
-$secondary-color: #d4d2d5;
-$third-color: #bfafa6;
-
-$font-sizes: (
-  "small": 16px,
-  "med": 25px,
-  "larg": 30px,
-  "x-large": 35px,
-);
-body {
-  background-color: $primary-color;
-}
-nav {
-  background-color: $secondary-color;
-  width: 100%;
+header {
+  background-color: var.$secondary-color;
   display: flex;
-  margin-bottom: 20px;
-  input {
-    border-radius: 25px;
-    padding-left: 15px;
+  flex-wrap: wrap;
+  h1 {
+    font-size: map-get(var.$font-sizes, x-large);
+    width: 25%;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+  .head-right {
+    width: 72.5%;
+    text-align: right;
+  }
+  .logo {
+    @include mixins.round-logo;
+    &:hover {
+      background-color: var.$third-color;
+    }
   }
 }
-.logo {
-  @include round-logo;
 
-  &:hover {
-    background-color: $third-color;
-  }
-}
-.logo-main {
-  background-color: darken($secondary-color, 20%);
-  &:hover {
-    background-color: darken($secondary-color, 20%);
-  }
-}
-.search-bar {
-  width: 100%;
-  margin: 5px;
-}
-h1 {
-  background-color: $third-color;
+h2 {
+  background-color: var.$secondary-color;
   text-align: center;
-  font-size: map-get($font-sizes, x-large);
+  font-size: map-get(var.$font-sizes, large);
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+//img display
+
+.photos-container {
+  position: relative;
+  button {
+    right: 5px;
+    top: 30%;
+    position: absolute;
+    z-index: 3;
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+#img-display {
+  display: flex;
+  position: relative;
+  overflow-y: scroll;
+  background-color: lighten(var.$secondary-color, 5);
+  padding-bottom: 5px;
+  li {
+    border-radius: 50px;
+    padding: 5px;
+  }
+  img {
+    border-radius: 15px;
+    height: 80px;
+  }
 }

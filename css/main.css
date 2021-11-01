@@ -1,2 +1,230 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}table{border-collapse:collapse;border-spacing:0}input{border:none;outline:none}body{background-color:#6c698d}nav{background-color:#d4d2d5;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:20px}nav input{border-radius:25px;padding-left:15px}.logo{border-radius:50%;padding:10px;background-color:#edecee;margin:3px}.logo:hover{background-color:#bfafa6}.logo-main{background-color:#a29da4}.logo-main:hover{background-color:#a29da4}.search-bar{width:100%;margin:5px}h1{background-color:#bfafa6;text-align:center;font-size:35px}
+body {
+  background-color: #bfafa6;
+}
+
+.nav-link {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 4px solid black;
+}
+.nav-link li {
+  padding: 0 3px;
+  border-bottom: 3px solid transparent;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+.nav-link li:hover {
+  border-bottom: 3px solid white;
+}
+.nav-link .page-logo {
+  padding: 10px;
+}
+.nav-link input {
+  border-radius: 25px;
+  padding-left: 15px;
+  height: 30px;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+header {
+  background-color: #d4d2d5;
+  display: flex;
+  flex-wrap: wrap;
+}
+header h1 {
+  font-size: 35px;
+  width: 25%;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+header .head-right {
+  width: 72.5%;
+  text-align: right;
+}
+header .logo {
+  border-radius: 50%;
+  padding: 8px;
+  background-color: #edecee;
+  margin: 3px;
+}
+header .logo:hover {
+  background-color: #bfafa6;
+}
+
+h2 {
+  background-color: #d4d2d5;
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.photos-container {
+  position: relative;
+}
+.photos-container button {
+  right: 5px;
+  top: 30%;
+  position: absolute;
+  z-index: 3;
+  font-size: 16px;
+  border-radius: 50px;
+  padding: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#img-display {
+  display: flex;
+  position: relative;
+  overflow-y: scroll;
+  background-color: #e1dfe1;
+  padding-bottom: 5px;
+}
+#img-display li {
+  border-radius: 50px;
+  padding: 5px;
+}
+#img-display img {
+  border-radius: 15px;
+  height: 80px;
+}
+
 /*# sourceMappingURL=main.css.map */

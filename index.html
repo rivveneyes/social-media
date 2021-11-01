@@ -18,17 +18,30 @@
     <title>Social</title>
   </head>
   <header>
-    <nav>
-      <i class="logo logo-main fab fa-stripe-s fa-lg"></i>
+    <!-- <i class="logo logo-main fab fa-stripe-s fa-lg"></i> -->
+    <h1>Social</h1>
+    <div class="head-right">
       <i class="logo fas fa-search fa-lg"></i>
-      <input class="search-bar" type="text" placeholder="Search" />
       <i class="logo fas fa-envelope-square fa-lg"></i>
-      <i class="logo fas fa-exclamation fa-lg"></i>
-      <i class="logo fas fa-bars"></i>
+    </div>
+    <nav>
+      <ol class="nav-link">
+        <li>
+          <i class="page-logo fas fa-home fa-lg"></i>
+        </li>
+        <li><i class="page-logo fas fa-exclamation fa-lg"></i></li>
+        <li><i class="page-logo fas fa-play-circle fa-lg"></i></li>
+        <li><i class="page-logo fas fa-puzzle-piece fa-lg"></i></li>
+      </ol>
+      <!-- <input class="search-bar" type="text" placeholder="Search" /> -->
     </nav>
   </header>
   <body>
-    <h1>Friends New Photos</h1>
+    <h2>Friends New Photos</h2>
+    <div class="photos-container">
+      <button id="next-scoll"><i class="fas fa-arrow-right"></i></button>
+      <ol id="img-display"></ol>
+    </div>
     <script src="scripts.js"></script>
   </body>
 </html>

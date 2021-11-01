@@ -1,0 +1,26 @@
+@use "tools/variables" as var;
+.nav-link {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 4px solid black;
+  li {
+    padding: 0 3px;
+    border-bottom: 3px solid transparent;
+    &:hover {
+      border-bottom: 3px solid white;
+    }
+
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+  }
+  .page-logo {
+    padding: 10px;
+  }
+  input {
+    border-radius: 25px;
+    padding-left: 15px;
+    height: 30px;
+  }
+}

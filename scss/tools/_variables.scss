@@ -1,0 +1,13 @@
+$primary-color: #6c698d;
+$secondary-color: #d4d2d5;
+$third-color: #bfafa6;
+
+$font-sizes: (
+  "small": 16px,
+  "med": 25px,
+  "large": 30px,
+  "x-large": 35px,
+);
+body {
+  background-color: $third-color;
+}

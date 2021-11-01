@@ -1,10 +1,17 @@
 $(document).ready(function () {
   const address = "https://randomuser.me/api/?results=20";
-  let fetchedPeople;
   async function grabUsers(call) {
-    fetch(call)
-      .then((res) => res.json())
-      .then((data) => (fetchedPeople = data.results));
+    const people = await fetch(call).then((res) => res.json());
+    console.log(people);
+    people.results.forEach((person) => {
+      const newLi = `<li><img src=${person.picture.medium}><img></li> `;
+      $("#img-display").append(newLi);
+    });
   }
+
+  $("#next-scoll").click(() => {
+    alert("hit");
+  });
+
   grabUsers(address);
 });
