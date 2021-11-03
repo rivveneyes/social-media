@@ -18,9 +18,6 @@ header {
   }
   .logo {
     @include mixins.round-logo;
-    &:hover {
-      background-color: var.$third-color;
-    }
   }
 }
 
@@ -61,4 +58,57 @@ h2 {
     border-radius: 15px;
     height: 80px;
   }
+}
+.user-post-bar {
+  display: flex;
+  align-items: center;
+  background-color: var.$secondary-color;
+  margin-bottom: 8px;
+  .user-img {
+    background-image: url(../avatar.png);
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 5px;
+  }
+  input {
+    width: 50%;
+    height: 20px;
+    border-radius: 50px;
+    padding-left: 10px;
+    outline: 1px solid black;
+    margin-right: 10px;
+  }
+  .share-img {
+    @include mixins.round-logo;
+  }
+}
+.post-section {
+  padding: 5px;
+}
+#single-post {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 15px;
+  .post-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  img {
+    border-radius: 50%;
+    height: 50px;
+  }
+  span {
+    margin-left: 5px;
+  }
+  p {
+    padding: 0px 0px 20px 10px;
+    text-indent: 10px;
+  }
+}
+#post-interactions {
+  text-align: end;
 }
