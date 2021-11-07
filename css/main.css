@@ -258,30 +258,51 @@ h2 {
   padding: 5px;
 }
 
-#single-post {
+.single-post {
   background-color: white;
   padding: 5px;
   margin-bottom: 15px;
 }
-#single-post .post-heading {
+.single-post .post-heading {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
-#single-post img {
+.single-post img {
   border-radius: 50%;
   height: 50px;
 }
-#single-post span {
+.single-post span {
   margin-left: 5px;
 }
-#single-post p {
+.single-post p {
   padding: 0px 0px 20px 10px;
   text-indent: 10px;
 }
 
-#post-interactions {
+.post-interactions {
   text-align: end;
+}
+
+.interaction-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+.interaction-bar li {
+  z-index: 3;
+  padding: 18px;
+  margin: 5px;
+  background-color: red;
+  position: relative;
+}
+.interaction-bar .like {
+  background-image: url("../resources/smile-img.svg");
+}
+.interaction-bar .comment {
+  background-image: url("../resources/comment-img.svg");
+}
+.interaction-bar .share {
+  background-image: url("../resources/share-img.svg");
 }
 
 /*# sourceMappingURL=main.css.map */
