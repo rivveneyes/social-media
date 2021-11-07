@@ -13,6 +13,11 @@
       src="https://kit.fontawesome.com/9a7fac8c65.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
     <link rel="shortcut icon" href="letter-s.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="css/main.css" />
     <title>Social</title>
@@ -44,11 +49,17 @@
     </div>
     <h2>Friends New Photos</h2>
     <div class="photos-container">
-      <button id="next-scoll"><i class="fas fa-arrow-right"></i></button>
-
-      <ol id="img-display"></ol>
+      <!-- <button id="next-scoll"><i class="fas fa-arrow-right"></i></button> -->
+      <ol
+        id="img-display"
+        data-slick='{"slidesToShow": 3.7, "slidesToScroll": 3}'
+      ></ol>
     </div>
     <div class="post-section"></div>
     <script src="scripts.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
   </body>
 </html>

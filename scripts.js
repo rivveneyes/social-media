@@ -5,23 +5,23 @@ $(document).ready(function () {
   $("#next-scoll").click(() => {
     alert("hit");
   });
-});
-async function grabUsers(call) {
-  const people = await fetch(call).then((res) => res.json());
-  people.results.forEach((person) => {
-    const newLi = `<li><img src=${person.picture.medium}><img></li> `;
-    $("#img-display").append(newLi);
-  });
-  let numberRefrence = people.results.length;
 
-  //do while numbref>0 produce a
-  //post with user-img text and comments util section
-  // Math.floor(Math.random() * numberRefrence);
-  while (numberRefrence > 0) {
-    let randomUser = randomNumber(numberRefrence);
-    let selectedPerson = people.results[randomUser];
+  async function grabUsers(call) {
+    const people = await fetch(call).then((res) => res.json());
+    people.results.forEach((person) => {
+      const newLi = `<li><img src=${person.picture.medium}><img></li> `;
+      $("#img-display").append(newLi);
+    });
+    let numberRefrence = people.results.length;
 
-    const newPost = `
+    //do while numbref>0 produce a
+    //post with user-img text and comments util section
+    // Math.floor(Math.random() * numberRefrence);
+    while (numberRefrence > 0) {
+      let randomUser = randomNumber(numberRefrence);
+      let selectedPerson = people.results[randomUser];
+
+      const newPost = `
     <div class="single-post">
       <div class="post-heading">
         <img src=${selectedPerson.picture.medium}></img>
@@ -29,13 +29,15 @@ async function grabUsers(call) {
       </div>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam perspiciatis architecto neque deleniti </p>
     ${interactionBar()}
-    
+    <input type="text" id="lname" name="lname" placeholder="THIS IS THE SPOT">
     </div>`;
-    $(".post-section").append(newPost);
-    numberRefrence--;
+      $(".post-section").append(newPost);
+      numberRefrence--;
+    }
+    interactionListener();
+    $("#img-display").slick();
   }
-  interactionListener();
-}
+});
 function randomNumber(limmitNum) {
   return Math.floor(Math.random() * limmitNum);
 }
@@ -67,6 +69,26 @@ function interactionListener() {
           }
           break;
         case "like clicked":
+          {
+            $(action).removeClass("clicked");
+            const number = parseInt(stringNubmer.innerHTML);
+            stringNubmer.innerHTML = number - 1;
+          }
+          break;
+      }
+    } else if ($(action).hasClass("share")) {
+      const hasClicked = action.className;
+      let stringNubmer = $(action).parent().parent().children(".shares")[0];
+
+      switch (hasClicked) {
+        case "share":
+          {
+            $(action).addClass("clicked");
+            const number = parseInt(stringNubmer.innerHTML);
+            stringNubmer.innerHTML = number + 1;
+          }
+          break;
+        case "share clicked":
           {
             $(action).removeClass("clicked");
             const number = parseInt(stringNubmer.innerHTML);
