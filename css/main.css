@@ -273,22 +273,37 @@ h2 {
   text-indent: 10px;
   line-height: 1.3rem;
 }
+.single-post .place-comment {
+  margin: 10px 5px 5px;
+  padding-right: 5px;
+  background-color: #e6e6e6;
+}
+.single-post .post-button {
+  border: none;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: #b3b3b3;
+}
 
 .post-interactions {
   text-align: end;
 }
 
 .interaction-bar {
+  padding-top: 2px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   border-top: 1px solid black;
 }
-.interaction-bar li {
-  z-index: 3;
+.interaction-bar div {
   padding: 18px;
-  margin: 5px;
   position: relative;
   border-radius: 5px;
+  margin-right: 3px;
+}
+.interaction-bar small {
+  margin-right: 25px;
 }
 .interaction-bar .clicked {
   background-color: rgba(127, 139, 243, 0.3);

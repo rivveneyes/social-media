@@ -29,7 +29,8 @@ $(document).ready(function () {
       </div>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam perspiciatis architecto neque deleniti </p>
     ${interactionBar()}
-    <input type="text" id="lname" name="lname" placeholder="THIS IS THE SPOT">
+    <input type="text" class="place-comment" placeholder="Post comment">
+    <button class="post-button">Post</button>
     </div>`;
       $(".post-section").append(newPost);
       numberRefrence--;
@@ -46,11 +47,11 @@ function interactionBar() {
   return `<div class="post-interactions"> <small class='likes'>${randomNumber(
     50
   )}</small> likes ~ <small class='shares'>${randomNumber(30)}</small> shares
-<ol class="interaction-bar">
- <li class="like"></li>
- <li class="comment"></li>
- <li class="share"></li>
-  </ol>
+<div class="interaction-bar">
+<div class="like"></div><small>like</small>
+<div class="comment"></div><small>comment</small>
+ <div class="share"></div><small>share</small>
+  </div>
 </div>`;
 }
 function interactionListener() {

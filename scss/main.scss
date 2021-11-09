@@ -104,20 +104,37 @@ h2 {
     text-indent: 10px;
     line-height: 1.3rem;
   }
+  .place-comment {
+    margin: 10px 5px 5px;
+    padding-right: 5px;
+    background-color: darken(white, 10);
+  }
+  .post-button {
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: darken(white, 30);
+  }
 }
 .post-interactions {
   text-align: end;
 }
 .interaction-bar {
+  padding-top: 2px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   border-top: 1px solid black;
-  li {
-    z-index: 3;
+
+  div {
     padding: 18px;
-    margin: 5px;
     position: relative;
     border-radius: 5px;
+
+    margin-right: 3px;
+  }
+  small {
+    margin-right: 25px;
   }
   .clicked {
     background-color: rgba(127, 139, 243, 0.3);
