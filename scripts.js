@@ -23,22 +23,48 @@ $(document).ready(function () {
 
       const newPost = `
     <div class="single-post">
-      <div class="post-heading">
-        <img src=${selectedPerson.picture.medium}></img>
-        <span>${selectedPerson.name.first} ${selectedPerson.name.last}</span>
-      </div>
+  ${creatUserDisplay(selectedPerson)}
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam perspiciatis architecto neque deleniti </p>
     ${interactionBar()}
-    <input type="text" class="place-comment" placeholder="Post comment">
-    <button class="post-button">Post</button>
+    <div class="comments-page">
+        <input type="text" class="place-comment comment" placeholder="Post comment">
+        <button class="post-button post">Post</button>
+        <span class="comment">comments</span>
+    </div>
+      <div class="hide show show-comments-section">
+        <div class="user-comment-display">
+           ${creatUserDisplay(selectedPerson)}
+          <button class="comment">EXIT</button>
+        </div>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam</p>
+      </div>
     </div>`;
       $(".post-section").append(newPost);
       numberRefrence--;
     }
     interactionListener();
+    interactComments();
     $("#img-display").slick();
   }
 });
+function interactComments() {
+  $(".comments-page").click((e) => {
+    const post = e.target;
+    if ($(post).hasClass("comment")) {
+      const parent = $(post).parent().parent()[0];
+      const picker = $(parent).children(".show")[0];
+      $(picker).toggleClass("hide");
+    }
+  });
+}
+function creatUserDisplay(user) {
+  return `<div class="post-heading">
+      <img src=${user.picture.medium}></img>
+      <span>
+        ${user.name.first} ${user.name.last}
+      </span>
+    </div>`;
+}
 function randomNumber(limmitNum) {
   return Math.floor(Math.random() * limmitNum);
 }
