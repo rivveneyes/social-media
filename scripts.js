@@ -32,11 +32,11 @@ $(document).ready(function () {
         <span class="comment">comments</span>
     </div>
       <div class="hide show show-comments-section">
-        <div class="user-comment-display">
-           ${creatUserDisplay(selectedPerson)}
-          <button class="comment">EXIT</button>
+      <button class="comment">EXIT</button>
+      <div class="user-comment-display">
+      ${creatUserDisplay(selectedPerson)}
+      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam</p>
         </div>
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam</p>
       </div>
     </div>`;
       $(".post-section").append(newPost);
@@ -44,16 +44,27 @@ $(document).ready(function () {
     }
     interactionListener();
     interactComments();
+
     $("#img-display").slick();
   }
 });
 function interactComments() {
   $(".comments-page").click((e) => {
     const post = e.target;
+    const parent = $(post).parent().parent()[0];
     if ($(post).hasClass("comment")) {
-      const parent = $(post).parent().parent()[0];
       const picker = $(parent).children(".show")[0];
       $(picker).toggleClass("hide");
+    } else if ($(post).hasClass("post-button")) {
+      const commentPage = $(post).parent()[0];
+      const input = $(commentPage).children(".place-comment")[0];
+      if (input.value) {
+        const pince = $(parent).children(".show-comments-section")[0];
+        console.log(pince);
+
+        const newPost = `<div class="user-comment-display"><div class="user-img"></div><p>${input.value}</p></div>`;
+        pince.innerHTML += newPost;
+      }
     }
   });
 }
@@ -126,3 +137,8 @@ function interactionListener() {
     }
   });
 }
+// function addCommentToPost() {
+//   $(".comment-page").click(() => {
+
+//   });
+// }

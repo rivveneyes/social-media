@@ -193,6 +193,16 @@ h2 {
   padding-top: 10px;
 }
 
+.user-img {
+  background-image: url(../avatar.png);
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 5px;
+}
+
 .photos-container {
   position: relative;
   background-color: #e1dfe1;
@@ -222,15 +232,6 @@ h2 {
   align-items: center;
   background-color: #d4d2d5;
   margin-bottom: 8px;
-}
-.user-post-bar .user-img {
-  background-image: url(../avatar.png);
-  background-size: cover;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: white;
-  margin: 5px;
 }
 .user-post-bar input {
   width: 50%;
@@ -360,9 +361,6 @@ h2 {
   width: 90%;
   text-indent: 10px;
   background-color: rgba(212, 210, 213, 0.9);
-}
-.show-comments-section .user-comment-display {
-  display: flex;
 }
 .show-comments-section button {
   height: fit-content;
