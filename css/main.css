@@ -262,6 +262,9 @@ h2 {
   align-items: center;
   margin-bottom: 15px;
 }
+.single-post .post-heading span {
+  color: white;
+}
 .single-post img {
   border-radius: 50%;
   height: 50px;
@@ -270,7 +273,7 @@ h2 {
   margin-left: 5px;
 }
 .single-post p {
-  padding: 0px 0px 20px 10px;
+  padding: 0px 2px 20px 10px;
   text-indent: 10px;
   line-height: 1.3rem;
 }
@@ -308,13 +311,10 @@ h2 {
   margin-right: 25px;
   cursor: pointer;
 }
-.interaction-bar small:hover {
-  background-color: #d4d2d5;
-}
-.interaction-bar .clicked {
+.interaction-bar div.clicked {
   background-color: rgba(127, 139, 243, 0.3);
 }
-.interaction-bar .like {
+.interaction-bar div.like {
   background-image: url("../resources/smile-img.svg");
   background-repeat: no-repeat;
 }
@@ -322,7 +322,7 @@ h2 {
   background-image: url("../resources/comment-img.svg");
   background-repeat: no-repeat;
 }
-.interaction-bar .share {
+.interaction-bar div.share {
   background-image: url("../resources/share-img.svg");
   background-repeat: no-repeat;
 }
@@ -345,7 +345,6 @@ h2 {
 }
 .comments-page span:hover {
   border-radius: 5px;
-  background-color: #d4d2d5;
   cursor: pointer;
 }
 
@@ -362,7 +361,15 @@ h2 {
   text-indent: 10px;
   background-color: rgba(212, 210, 213, 0.9);
 }
-.show-comments-section button {
+.show-comments-section .user-comment-display {
+  background-color: #6c698d;
+  padding: 3px 3px 0;
+}
+.show-comments-section .user-comment-display .user-img {
+  height: 30px;
+  width: 30px;
+}
+.show-comments-section .exit-button {
   height: fit-content;
   height: fit-content;
   position: absolute;
@@ -370,6 +377,11 @@ h2 {
   border: none;
   background-color: #e67c7c;
   border-radius: 5px;
+  margin-top: 5px;
+}
+.show-comments-section .exit-button:hover {
+  color: white;
+  scale: 1.08;
 }
 .show-comments-section p {
   margin-bottom: 10px;

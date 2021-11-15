@@ -92,6 +92,9 @@ h2 {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    span {
+      color: white;
+    }
   }
   img {
     border-radius: 50%;
@@ -101,7 +104,7 @@ h2 {
     margin-left: 5px;
   }
   p {
-    padding: 0px 0px 20px 10px;
+    padding: 0px 2px 20px 10px;
     text-indent: 10px;
     line-height: 1.3rem;
   }
@@ -137,14 +140,11 @@ h2 {
   small {
     margin-right: 25px;
     cursor: pointer;
-    &:hover {
-      background-color: var.$secondary-color;
-    }
   }
-  .clicked {
+  div.clicked {
     background-color: rgba(127, 139, 243, 0.3);
   }
-  .like {
+  div.like {
     background-image: url("../resources/smile-img.svg");
     background-repeat: no-repeat;
   }
@@ -152,7 +152,7 @@ h2 {
     background-image: url("../resources/comment-img.svg");
     background-repeat: no-repeat;
   }
-  .share {
+  div.share {
     background-image: url("../resources/share-img.svg");
     background-repeat: no-repeat;
   }
@@ -174,7 +174,6 @@ h2 {
     text-decoration: underline;
     &:hover {
       border-radius: 5px;
-      background-color: var.$secondary-color;
       cursor: pointer;
     }
   }
@@ -191,8 +190,16 @@ h2 {
   text-indent: 10px;
   background-color: rgba(var.$secondary-color, 0.9);
   .user-comment-display {
+    background-color: var.$primary-color;
+    padding: 3px 3px 0;
+
+    .user-img {
+      height: 30px;
+      width: 30px;
+    }
   }
-  button {
+
+  .exit-button {
     height: fit-content;
     height: fit-content;
     position: absolute;
@@ -200,6 +207,11 @@ h2 {
     border: none;
     background-color: rgb(230, 124, 124);
     border-radius: 5px;
+    margin-top: 5px;
+    &:hover {
+      color: white;
+      scale: 1.08;
+    }
   }
   p {
     margin-bottom: 10px;

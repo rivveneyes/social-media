@@ -14,13 +14,9 @@ $(document).ready(function () {
     });
     let numberRefrence = people.results.length;
 
-    //do while numbref>0 produce a
-    //post with user-img text and comments util section
-    // Math.floor(Math.random() * numberRefrence);
     while (numberRefrence > 0) {
       let randomUser = randomNumber(numberRefrence);
       let selectedPerson = people.results[randomUser];
-
       const newPost = `
     <div class="single-post">
   ${creatUserDisplay(selectedPerson)}
@@ -32,19 +28,19 @@ $(document).ready(function () {
         <span class="comment">comments</span>
     </div>
       <div class="hide show show-comments-section">
-      <button class="comment">EXIT</button>
+      <button class="exit-button">EXIT</button>
       <div class="user-comment-display">
       ${creatUserDisplay(selectedPerson)}
-      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam</p>
+      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam  Lorem ipsum dolor, sit amet</p>
         </div>
       </div>
     </div>`;
       $(".post-section").append(newPost);
       numberRefrence--;
     }
+    exitButton();
     interactionListener();
     interactComments();
-
     $("#img-display").slick();
   }
 });
@@ -52,20 +48,33 @@ function interactComments() {
   $(".comments-page").click((e) => {
     const post = e.target;
     const parent = $(post).parent().parent()[0];
+    const picker = $(parent).children(".show")[0];
     if ($(post).hasClass("comment")) {
-      const picker = $(parent).children(".show")[0];
       $(picker).toggleClass("hide");
     } else if ($(post).hasClass("post-button")) {
       const commentPage = $(post).parent()[0];
       const input = $(commentPage).children(".place-comment")[0];
       if (input.value) {
+        $(picker).removeClass("hide");
         const pince = $(parent).children(".show-comments-section")[0];
-        console.log(pince);
-
-        const newPost = `<div class="user-comment-display"><div class="user-img"></div><p>${input.value}</p></div>`;
+        const newPost = `<div class="user-comment-display"><div class="post-heading"><div class="user-img"></div><span>User</span></div><p>${input.value}</p></div>`;
         pince.innerHTML += newPost;
+        exitButton();
+        input.value = "";
       }
+      return;
     }
+    return;
+  });
+}
+function exitButton() {
+  const exitButtonsArr = [...$(".exit-button")];
+  exitButtonsArr.forEach((button) => {
+    $(button).click((e) => {
+      const parent = $(e.target).parent()[0];
+      console.log(parent);
+      $(parent).addClass("hide");
+    });
   });
 }
 function creatUserDisplay(user) {
@@ -85,9 +94,9 @@ function interactionBar() {
     50
   )}</small> likes ~ <small class='shares'>${randomNumber(30)}</small> shares
 <div class="interaction-bar">
-<div class="like"></div><small>like</small>
+<div class="like"></div><small class="like">like</small>
 <div class="comment"></div><small>comment</small>
- <div class="share"></div><small>share</small>
+ <div class="share"></div><small class="share">share</small>
   </div>
 </div>`;
 }
@@ -102,6 +111,7 @@ function interactionListener() {
         case "like":
           {
             $(action).addClass("clicked");
+            $(action).siblings(".like").addClass("clicked");
             const number = parseInt(stringNubmer.innerHTML);
             stringNubmer.innerHTML = number + 1;
           }
@@ -109,6 +119,7 @@ function interactionListener() {
         case "like clicked":
           {
             $(action).removeClass("clicked");
+            $(action).siblings(".like").removeClass("clicked");
             const number = parseInt(stringNubmer.innerHTML);
             stringNubmer.innerHTML = number - 1;
           }
@@ -122,6 +133,7 @@ function interactionListener() {
         case "share":
           {
             $(action).addClass("clicked");
+            $(action).siblings(".share").addClass("clicked");
             const number = parseInt(stringNubmer.innerHTML);
             stringNubmer.innerHTML = number + 1;
           }
@@ -129,6 +141,7 @@ function interactionListener() {
         case "share clicked":
           {
             $(action).removeClass("clicked");
+            $(action).siblings(".share").removeClass("clicked");
             const number = parseInt(stringNubmer.innerHTML);
             stringNubmer.innerHTML = number - 1;
           }
@@ -137,8 +150,3 @@ function interactionListener() {
     }
   });
 }
-// function addCommentToPost() {
-//   $(".comment-page").click(() => {
-
-//   });
-// }
