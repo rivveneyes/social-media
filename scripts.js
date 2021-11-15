@@ -22,19 +22,9 @@ $(document).ready(function () {
   ${creatUserDisplay(selectedPerson)}
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam perspiciatis architecto neque deleniti </p>
     ${interactionBar()}
-    <div class="comments-page">
-        <input type="text" class="place-comment comment" placeholder="Post comment">
-        <button class="post-button post">Post</button>
-        <span class="comment">comments</span>
-    </div>
-      <div class="hide show show-comments-section">
-      <button class="exit-button">EXIT</button>
-      <div class="user-comment-display">
-      ${creatUserDisplay(selectedPerson)}
-      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam  Lorem ipsum dolor, sit amet</p>
-        </div>
-      </div>
-    </div>`;
+  ${interactionSkeletion(creatUserDisplay(selectedPerson))}
+  </div>`;
+
       $(".post-section").append(newPost);
       numberRefrence--;
     }
@@ -42,8 +32,24 @@ $(document).ready(function () {
     interactionListener();
     interactComments();
     $("#img-display").slick();
+    PostUserComment();
   }
 });
+function interactionSkeletion(person) {
+  return `  <div class="comments-page">
+  <input type="text" class="place-comment comment" placeholder="Post comment">
+  <button class="post-button post">Post</button>
+  <span class="comment">comments</span>
+</div>
+<div class="hide show show-comments-section">
+<button class="exit-button">EXIT</button>
+<div class="user-comment-display">
+ ${person}
+<p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, aliquam  Lorem ipsum dolor, sit amet</p>
+  </div>
+</div>
+</div>`;
+}
 function interactComments() {
   $(".comments-page").click((e) => {
     const post = e.target;
@@ -72,7 +78,7 @@ function exitButton() {
   exitButtonsArr.forEach((button) => {
     $(button).click((e) => {
       const parent = $(e.target).parent()[0];
-      console.log(parent);
+
       $(parent).addClass("hide");
     });
   });
@@ -147,6 +153,27 @@ function interactionListener() {
           }
           break;
       }
+    }
+  });
+}
+
+function PostUserComment() {
+  $("#post-user-comment").click(() => {
+    if ($("#user-input-text") !== "") {
+      console.log("active");
+      const user = `<div class="post-heading"><div class="user-img"></div>
+      <span>User</span></div>`;
+      const newUserPost = `
+      <div class="single-post">
+      ${user}
+        <p>${$("#user-input-text")[0].value}</p>
+        ${interactionBar()}
+        ${interactionSkeletion(user)}
+        </div>`;
+      $(".post-section").prepend(newUserPost);
+      interactionListener();
+      interactComments();
+      exitButton();
     }
   });
 }

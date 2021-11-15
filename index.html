@@ -23,7 +23,6 @@
     <title>Social</title>
   </head>
   <header>
-    <!-- <i class="logo logo-main fab fa-stripe-s fa-lg"></i> -->
     <h1>Social</h1>
     <div class="head-right">
       <i class="logo fas fa-search fa-lg"></i>
@@ -38,18 +37,21 @@
         <li><i class="page-logo fas fa-play-circle fa-lg"></i></li>
         <li><i class="page-logo fas fa-puzzle-piece fa-lg"></i></li>
       </ol>
-      <!-- <input class="search-bar" type="text" placeholder="Search" /> -->
     </nav>
   </header>
   <body>
     <div class="user-post-bar">
       <div class="user-img"></div>
-      <input type="text" placeholder="Share your thoughts" />
+      <input
+        id="user-input-text"
+        type="text"
+        placeholder="Share your thoughts"
+      />
+      <button class="post-button" id="post-user-comment">Post</button>
       <i class="share-img fas fa-camera-retro"></i>
     </div>
     <h2>Friends New Photos</h2>
     <div class="photos-container">
-      <!-- <button id="next-scoll"><i class="fas fa-arrow-right"></i></button> -->
       <ol
         id="img-display"
         data-slick='{"slidesToShow": 3.7, "slidesToScroll": 3}'

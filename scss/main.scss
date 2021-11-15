@@ -92,9 +92,6 @@ h2 {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    span {
-      color: white;
-    }
   }
   img {
     border-radius: 50%;
@@ -192,7 +189,9 @@ h2 {
   .user-comment-display {
     background-color: var.$primary-color;
     padding: 3px 3px 0;
-
+    span {
+      color: white;
+    }
     .user-img {
       height: 30px;
       width: 30px;

@@ -262,9 +262,6 @@ h2 {
   align-items: center;
   margin-bottom: 15px;
 }
-.single-post .post-heading span {
-  color: white;
-}
 .single-post img {
   border-radius: 50%;
   height: 50px;
@@ -364,6 +361,9 @@ h2 {
 .show-comments-section .user-comment-display {
   background-color: #6c698d;
   padding: 3px 3px 0;
+}
+.show-comments-section .user-comment-display span {
+  color: white;
 }
 .show-comments-section .user-comment-display .user-img {
   height: 30px;
