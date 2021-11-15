@@ -101,7 +101,7 @@ function interactionBar() {
   )}</small> likes ~ <small class='shares'>${randomNumber(30)}</small> shares
 <div class="interaction-bar">
 <div class="like"></div><small class="like">like</small>
-<div class="comment"></div><small>comment</small>
+<div class="comment"></div><small class="comment">comments</small>
  <div class="share"></div><small class="share">share</small>
   </div>
 </div>`;
@@ -153,6 +153,10 @@ function interactionListener() {
           }
           break;
       }
+    } else if ($(action).hasClass("comment")) {
+      const parent = $(action).parent().parent().parent()[0];
+      const target = $(parent).children(".show-comments-section")[0];
+      $(target).toggleClass("hide");
     }
   });
 }
