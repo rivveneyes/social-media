@@ -1,10 +1,5 @@
 $(document).ready(function () {
-  const address = "https://randomuser.me/api/?results=12";
-  grabUsers(address);
-
-  $("#next-scoll").click(() => {
-    alert("hit");
-  });
+  const address = "https://randomuser.me/api/?results=10";
 
   async function grabUsers(call) {
     const people = await fetch(call).then((res) => res.json());
@@ -29,12 +24,15 @@ $(document).ready(function () {
       numberRefrence--;
     }
     exitButton();
-    interactionListener();
-    interactComments();
+    postSection();
     $("#img-display").slick();
     PostUserComment();
+    interactComments();
   }
+  grabUsers(address);
 });
+
+///--------html-skeletons----
 function interactionSkeletion(person) {
   return `  <div class="comments-page">
   <input type="text" class="place-comment comment" placeholder="Post comment">
@@ -50,39 +48,7 @@ function interactionSkeletion(person) {
 </div>
 </div>`;
 }
-function interactComments() {
-  $(".comments-page").click((e) => {
-    const post = e.target;
-    const parent = $(post).parent().parent()[0];
-    const picker = $(parent).children(".show")[0];
-    if ($(post).hasClass("comment")) {
-      $(picker).toggleClass("hide");
-    } else if ($(post).hasClass("post-button")) {
-      const commentPage = $(post).parent()[0];
-      const input = $(commentPage).children(".place-comment")[0];
-      if (input.value) {
-        $(picker).removeClass("hide");
-        const pince = $(parent).children(".show-comments-section")[0];
-        const newPost = `<div class="user-comment-display"><div class="post-heading"><div class="user-img"></div><span>User</span></div><p>${input.value}</p></div>`;
-        pince.innerHTML += newPost;
-        exitButton();
-        input.value = "";
-      }
-      return;
-    }
-    return;
-  });
-}
-function exitButton() {
-  const exitButtonsArr = [...$(".exit-button")];
-  exitButtonsArr.forEach((button) => {
-    $(button).click((e) => {
-      const parent = $(e.target).parent()[0];
-
-      $(parent).addClass("hide");
-    });
-  });
-}
+///-----sample-dummy-users
 function creatUserDisplay(user) {
   return `<div class="post-heading">
       <img src=${user.picture.medium}></img>
@@ -91,10 +57,7 @@ function creatUserDisplay(user) {
       </span>
     </div>`;
 }
-function randomNumber(limmitNum) {
-  return Math.floor(Math.random() * limmitNum);
-}
-
+///-----likes-comments-shares
 function interactionBar() {
   return `<div class="post-interactions"> <small class='likes'>${randomNumber(
     50
@@ -106,10 +69,51 @@ function interactionBar() {
   </div>
 </div>`;
 }
-function interactionListener() {
-  $(".interaction-bar").click((e) => {
-    let action = e.target;
+//user-post-skeleton
+function PostUserComment() {
+  $("#post-user-comment").click(() => {
+    if ($("#user-input-text")[0].value !== "") {
+      const user = ` 
+      <div class="post-heading">
+        <div class="user-img"></div>
+        <span>User</span></div>`;
+      const newUserPost = `
+        <div class="single-post">
+      ${user}
+        <p>${$("#user-input-text")[0].value}</p>
+        ${interactionBar()}
+        ${interactionSkeletion(user)}
+        </div>
+        `;
+      $(".post-section").prepend(newUserPost);
+      $("#user-input-text")[0].value = "";
+      exitButton();
+    }
+    commentsListener($(".comments-page")[0]);
+  });
+}
+///--------Listeners----
+function exitButton() {
+  const exitButtonsArr = [...$(".exit-button")];
+  exitButtonsArr.forEach((button) => {
+    $(button).click((e) => {
+      const parent = $(e.target).parent()[0];
 
+      $(parent).addClass("hide");
+    });
+  });
+}
+///-----add-users-listiener-initalize---
+function interactComments() {
+  const comments = [...$(".comments-page")];
+  comments.forEach((comment) => {
+    commentsListener(comment);
+  });
+}
+///---all-users-posts-section----
+function postSection() {
+  $("#posts").click((e) => {
+    let action = e.target;
     if ($(action).hasClass("like")) {
       const hasClicked = action.className;
       let stringNubmer = $(action).parent().parent().children(".likes")[0];
@@ -134,7 +138,6 @@ function interactionListener() {
     } else if ($(action).hasClass("share")) {
       const hasClicked = action.className;
       let stringNubmer = $(action).parent().parent().children(".shares")[0];
-
       switch (hasClicked) {
         case "share":
           {
@@ -160,24 +163,31 @@ function interactionListener() {
     }
   });
 }
-
-function PostUserComment() {
-  $("#post-user-comment").click(() => {
-    if ($("#user-input-text") !== "") {
-      console.log("active");
-      const user = `<div class="post-heading"><div class="user-img"></div>
-      <span>User</span></div>`;
-      const newUserPost = `
-      <div class="single-post">
-      ${user}
-        <p>${$("#user-input-text")[0].value}</p>
-        ${interactionBar()}
-        ${interactionSkeletion(user)}
-        </div>`;
-      $(".post-section").prepend(newUserPost);
-      interactionListener();
-      interactComments();
-      exitButton();
+///----add-listener-to-new-comment---
+function commentsListener(target) {
+  $(target).click((e) => {
+    const post = e.target;
+    const parent = $(post).parent().parent()[0];
+    const picker = $(parent).children(".show")[0];
+    if ($(post).hasClass("comment")) {
+      $(picker).toggleClass("hide");
+    } else if ($(post).hasClass("post-button")) {
+      const commentPage = $(post).parent()[0];
+      const input = $(commentPage).children(".place-comment")[0];
+      if (input.value) {
+        $(picker).removeClass("hide");
+        const pince = $(parent).children(".show-comments-section")[0];
+        const newPost = `<div class="user-comment-display"><div class="post-heading"><div class="user-img"></div><span>User</span></div><p>${input.value}</p></div>`;
+        pince.innerHTML += newPost;
+        exitButton();
+        input.value = "";
+      }
+      return;
     }
+    return;
   });
+}
+//--------random number renerator---------
+function randomNumber(limmitNum) {
+  return Math.floor(Math.random() * limmitNum);
 }
