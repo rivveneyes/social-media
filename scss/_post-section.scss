@@ -1,0 +1,93 @@
+@use "tools/variables" as var;
+.post-section {
+  padding: 5px;
+  background-color: var.$primary-color;
+}
+.single-post {
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+
+  img {
+    border-radius: 50%;
+    height: 50px;
+  }
+  span {
+    margin-left: 5px;
+  }
+  p {
+    padding: 0px 2px 20px 10px;
+    text-indent: 10px;
+    line-height: 1.3rem;
+  }
+  .place-comment {
+    margin: 10px 5px 5px;
+    padding-right: 5px;
+    background-color: darken(white, 10);
+  }
+  .post-button {
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: darken(white, 30);
+  }
+}
+
+.post-interactions {
+  text-align: end;
+}
+.interaction-bar {
+  padding-top: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+
+  div {
+    padding: 12px;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 3px;
+    cursor: pointer;
+  }
+  small {
+    margin-right: 25px;
+    cursor: pointer;
+  }
+  div.clicked {
+    background-color: rgba(127, 139, 243, 0.3);
+  }
+  div.like {
+    background-image: url("../resources/smile-img.svg");
+    background-repeat: no-repeat;
+  }
+  div.comment {
+    background-image: url("../resources/comment-img.svg");
+    background-repeat: no-repeat;
+  }
+  div.share {
+    background-image: url("../resources/share-img.svg");
+    background-repeat: no-repeat;
+  }
+}
+.comments-page {
+  display: flex;
+  align-items: center;
+  button {
+    height: fit-content;
+    &:hover {
+      color: white;
+      background-color: var.$secondary-color;
+      cursor: pointer;
+    }
+  }
+  span {
+    margin: 12px 30px 5px 15px;
+    text-decoration: underline;
+    &:hover {
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

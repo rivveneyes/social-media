@@ -29,6 +29,7 @@ $(document).ready(function () {
     PostUserComment();
     interactComments();
   }
+  // $("#active-friends")[0].innerHTML = "lorem";
   grabUsers(address);
 });
 

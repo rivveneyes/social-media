@@ -1,6 +1,10 @@
 @use "tools/variables" as var;
 @use "tools/mixins";
 @use "navigation";
+@use "friends-photo-display";
+@use "post-section";
+@use "post's-individual-comments" as *;
+@use "media-queries" as brkpoints;
 @import "reset";
 header {
   background-color: var.$secondary-color;
@@ -20,7 +24,6 @@ header {
     @include mixins.round-logo;
   }
 }
-
 h2 {
   background-color: var.$secondary-color;
   text-align: center;
@@ -37,32 +40,6 @@ h2 {
   background-color: white;
   margin: 5px;
 }
-//img display
-
-.photos-container {
-  position: relative;
-  background-color: lighten(var.$secondary-color, 5);
-  padding-bottom: 20px;
-  .slick-prev {
-    z-index: 100;
-    position: absolute;
-    top: 60px;
-    background-color: rgba(255, 255, 255, 0.6);
-  }
-  .slick-next {
-    right: 5px;
-    top: 60px;
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: 100;
-    position: absolute;
-  }
-  button {
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-  }
-}
-
 .user-post-bar {
   display: flex;
   align-items: center;
@@ -80,151 +57,52 @@ h2 {
   .share-img {
     @include mixins.round-logo;
   }
-}
-.post-section {
-  padding: 5px;
-}
-.single-post {
-  background-color: white;
-  padding: 5px;
-  margin-bottom: 15px;
-  .post-heading {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  img {
-    border-radius: 50%;
-    height: 50px;
-  }
-  span {
-    margin-left: 5px;
-  }
-  p {
-    padding: 0px 2px 20px 10px;
-    text-indent: 10px;
-    line-height: 1.3rem;
-  }
-  .place-comment {
-    margin: 10px 5px 5px;
-    padding-right: 5px;
-    background-color: darken(white, 10);
-  }
-  .post-button {
-    border: none;
-    border-radius: 5px;
-    padding: 4px;
-    background-color: darken(white, 30);
-  }
-}
-.post-interactions {
-  text-align: end;
-}
-.interaction-bar {
-  padding-top: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid black;
 
-  div {
-    padding: 12px;
-    position: relative;
-    border-radius: 5px;
-    margin-right: 3px;
-    cursor: pointer;
-  }
-  small {
-    margin-right: 25px;
-    cursor: pointer;
-  }
-  div.clicked {
-    background-color: rgba(127, 139, 243, 0.3);
-  }
-  div.like {
-    background-image: url("../resources/smile-img.svg");
-    background-repeat: no-repeat;
-  }
-  div.comment {
-    background-image: url("../resources/comment-img.svg");
-    background-repeat: no-repeat;
-  }
-  div.share {
-    background-image: url("../resources/share-img.svg");
-    background-repeat: no-repeat;
-  }
-}
-
-.comments-page {
-  display: flex;
-  align-items: center;
-  button {
-    height: fit-content;
-    &:hover {
-      color: white;
-      background-color: var.$secondary-color;
-      cursor: pointer;
-    }
-  }
-  span {
-    margin: 12px 30px 5px 15px;
-    text-decoration: underline;
-    &:hover {
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  @media (min-width: map-get(brkpoints.$breakpoints, medium)) {
+    justify-content: center;
+    margin-bottom: 0;
   }
 }
 .hide {
   display: none;
 }
-.show-comments-section {
-  z-index: 100;
-  position: absolute;
-  padding-top: 5px;
-  height: fit-content;
-  width: 90%;
-  text-indent: 10px;
-  background-color: rgba(var.$secondary-color, 0.9);
-  .user-comment-display {
-    background-color: var.$primary-color;
-    padding: 3px 3px 0;
-    span {
-      color: white;
-    }
-    .user-img {
-      height: 30px;
-      width: 30px;
-    }
+@media (min-width: map-get(brkpoints.$breakpoints, medium)) {
+  #content-container {
+    display: grid;
+    grid-template-columns: 75vw 25vw;
+    max-width: 100%;
   }
 
-  .exit-button {
+  .main-content {
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 100vh;
+  }
+  #active-friends {
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 100vh;
     height: fit-content;
-    height: fit-content;
-    position: absolute;
-    right: 15px;
-    border: none;
-    background-color: rgb(230, 124, 124);
-    border-radius: 5px;
-    margin-top: 5px;
-    &:hover {
-      color: white;
-      scale: 1.08;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: lighten(var.$secondary-color, 5);
+    text-align: center;
+    background-color: var.$primary-color;
+
+    span {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background-color: lighten(var.$secondary-color, 10);
+      font-size: map-get(var.$font-sizes, med);
+      display: block;
+      margin-bottom: 10px;
     }
-  }
-  p {
-    margin-bottom: 10px;
-    border-bottom: 2px solid black;
-  }
-}
-.show-comments-section {
-  padding: 10px;
-  img {
-    border-radius: 100;
-    height: 30px;
-  }
-  p {
-    background-color: white;
-    border-radius: 5px;
+    ul {
+    }
+    li {
+      background-color: lighten(var.$primary-color, 10);
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
   }
 }
