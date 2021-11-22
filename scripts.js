@@ -1,15 +1,16 @@
 $(document).ready(function () {
-  const address = "https://randomuser.me/api/?results=10";
+  const httpAddress = "https://randomuser.me/api/?results=25";
 
   async function grabUsers(call) {
     const people = await fetch(call).then((res) => res.json());
     people.results.forEach((person) => {
-      const newLi = `<li><img src=${person.picture.medium}><img></li> `;
+      const newLi = `<li><img src=${person.picture.medium}></li> `;
       $("#img-display").append(newLi);
+      displayActiveUsers(person);
     });
     let numberRefrence = people.results.length;
 
-    while (numberRefrence > 0) {
+    while (numberRefrence > 10) {
       let randomUser = randomNumber(numberRefrence);
       let selectedPerson = people.results[randomUser];
       const newPost = `
@@ -19,20 +20,43 @@ $(document).ready(function () {
     ${interactionBar()}
   ${interactionSkeletion(creatUserDisplay(selectedPerson))}
   </div>`;
-
       $(".post-section").append(newPost);
+
       numberRefrence--;
     }
+
     exitButton();
     postSection();
-    $("#img-display").slick();
     PostUserComment();
     interactComments();
+    $("#img-display").slick({
+      responsive: [
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 6.7,
+            slidesToScroll: 4,
+          },
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 4.3,
+            slidesToScroll: 3.7,
+          },
+        },
+      ],
+    });
   }
+
   // $("#active-friends")[0].innerHTML = "lorem";
-  grabUsers(address);
+  grabUsers(httpAddress);
 });
 
+function displayActiveUsers(user) {
+  const activeUser = `<li><div class="active-position"><img src=${user.picture.medium}> <div class="active-dot"></div></div><p>${user.name.first} ${user.name.last}</p></li>`;
+  $("#active-users-list").prepend(activeUser);
+}
 ///--------html-skeletons----
 function interactionSkeletion(person) {
   return `  <div class="comments-page">
@@ -52,7 +76,7 @@ function interactionSkeletion(person) {
 ///-----sample-dummy-users
 function creatUserDisplay(user) {
   return `<div class="post-heading">
-      <img src=${user.picture.medium}></img>
+      <img src=${user.picture.medium}>
       <span>
         ${user.name.first} ${user.name.last}
       </span>

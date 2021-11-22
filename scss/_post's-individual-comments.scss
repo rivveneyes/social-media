@@ -13,11 +13,6 @@
 
   .user-comment-display {
     padding: 3px 8px 8px;
-    .post-heading {
-      display: flex;
-      align-items: center;
-      background-color: var.$primary-color;
-    }
     span {
       color: white;
     }
@@ -32,6 +27,9 @@
     p {
       background-color: white;
       border-radius: 5px;
+    }
+    .post-heading {
+      background-color: var.$primary-color;
     }
   }
 
