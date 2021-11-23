@@ -1,6 +1,5 @@
 $(document).ready(function () {
   const httpAddress = "https://randomuser.me/api/?results=25";
-
   async function grabUsers(call) {
     const people = await fetch(call).then((res) => res.json());
     people.results.forEach((person) => {
@@ -25,10 +24,6 @@ $(document).ready(function () {
       numberRefrence--;
     }
 
-    exitButton();
-    postSection();
-    PostUserComment();
-    interactComments();
     $("#img-display").slick({
       responsive: [
         {
@@ -47,9 +42,11 @@ $(document).ready(function () {
         },
       ],
     });
+    exitButton();
+    postSection();
+    PostUserComment();
+    interactComments();
   }
-
-  // $("#active-friends")[0].innerHTML = "lorem";
   grabUsers(httpAddress);
 });
 

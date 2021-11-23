@@ -3,6 +3,13 @@
   padding: 8px;
   background-color: var.$primary-color;
 }
+#posts {
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 65vh;
+  padding-bottom: 100px;
+  scrollbar-color: var.$primary-color var.$primary-color;
+}
 .single-post {
   margin: auto;
   max-width: 800px;
